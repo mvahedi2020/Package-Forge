@@ -21,7 +21,8 @@ export interface Quote { id: string; version: 1; catalog: string; clock: string;
 export interface State { schema:1; revision:number; draft:Draft; selected:TierId|null; history:Quote[]; scheduled:string|null; canceled:string[] }
 export function seed():State { return {schema:1,revision:0,draft:structuredClone(SCENARIOS[0].draft),selected:null,history:[],scheduled:null,canceled:[]} }
 export const money = (cents:number) => new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(cents / 100)
-export function validDraft(d:Draft):boolean { return !!d && Number.isInteger(d.editors) && d.editors>=0 && d.editors<=10000 && Number.isInteger(d.viewers) && d.viewers>=0 && d.viewers<=10000 && ['monthly','annual'].includes(d.cycle) && Array.isArray(d.needs) && d.needs.every(n=>FEATURES.includes(n)) && new Set(d.needs).size===d.needs.length }
+function exactKeys(value:object,keys:string[]):boolean {return Object.keys(value).length===keys.length&&Object.keys(value).every(k=>keys.includes(k))}
+export function validDraft(d:Draft):boolean { return !!d && exactKeys(d,['editors','viewers','needs','cycle']) && Number.isInteger(d.editors) && d.editors>=0 && d.editors<=10000 && Number.isInteger(d.viewers) && d.viewers>=0 && d.viewers<=10000 && ['monthly','annual'].includes(d.cycle) && Array.isArray(d.needs) && d.needs.every(n=>FEATURES.includes(n)) && new Set(d.needs).size===d.needs.length }
 export function fit(tier:TierId,d:Draft):string[] {
   if(!validDraft(d)) return ['Use whole counts from 0 to 10,000.']
   const t=TIERS.find(t=>t.id===tier)!
@@ -43,7 +44,7 @@ export function cancelScheduled(s:State):State {if(!s.scheduled) return s;return
 export function parseState(raw:string):State|null {
   try {
     const s=JSON.parse(raw) as State
-    if(!s||s.schema!==1||!Number.isSafeInteger(s.revision)||s.revision<0||s.revision>1000000||!validDraft(s.draft)||!(s.selected===null||TIERS.some(t=>t.id===s.selected))||!Array.isArray(s.history)||s.history.length>100||!Array.isArray(s.canceled)||new Set(s.canceled).size!==s.canceled.length) return null
+    if(!s||!exactKeys(s,['schema','revision','draft','selected','history','scheduled','canceled'])||s.schema!==1||!Number.isSafeInteger(s.revision)||s.revision<0||s.revision>1000000||!validDraft(s.draft)||!(s.selected===null||TIERS.some(t=>t.id===s.selected))||!Array.isArray(s.history)||s.history.length>100||!Array.isArray(s.canceled)||new Set(s.canceled).size!==s.canceled.length) return null
     for(let i=0;i<s.history.length;i++) {
       const q=s.history[i];if(!q||!TIERS.some(t=>t.id===q.tier)||!validDraft(q.draft)||!Number.isSafeInteger(q.revision)||q.revision<0||q.revision>=s.revision||(i>0&&q.revision<=s.history[i-1].revision)) return null
       const expected=quote({...seed(),revision:q.revision,draft:q.draft,history:s.history.slice(0,i)},q.tier)
