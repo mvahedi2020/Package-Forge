@@ -28,6 +28,12 @@ React review checked stable dialog effects, derived fit/cost state, explicit but
 
 Ask a participant to choose Cedar's lowest-cost fitting tier, explain annual charge versus equivalent monthly, and state Kite's exact lost capability/capacities and effective date. Observe correct package selection, total-cost explanation and downgrade consequence comprehension without hints. No participant results, customer/commercial outcomes or owner comprehension have been observed. These proposed measures do not establish willingness to pay.
 
-## Release evidence
+## Release evidence — October 2, 2026
 
-Local implementation and verification are prepared for primary independent review. Public repository creation/push, final Actions/Pages publication, exact public/local head agreement, built/live file parity, profile routing and Mo's personal review remain pending primary release gates. No public release is claimed by local tests. Other product documents link here for release status.
+The primary reviewer independently checked the fixed Studio baseline, reviewed an eight-editor annual quote of $960 with $80 equivalent monthly, compared the $2,880 Archive quote, canceled and confirmed a replacement, reviewed the $0 Base downgrade with explicit lost capabilities/capacity, canceled its schedule without reviving an older one, and verified the no-fit scenario. Three immutable quote records and cancellation survived refresh. Scenario entry focused the editor at 1280×633; the 320px page had no horizontal overflow or reported page/console errors.
+
+Initial release `d828249579baf683c87f60c242244224f533720e` passed [GitHub verification and Pages deployment](https://github.com/mvahedi2020/Package-Forge/actions/runs/36989772732). Local HEAD matched public main, the worktree was clean, and all **10 deployed files** matched the local production build and the GitHub deployment artifact byte for byte. The live page rendered its expected entry controls without reported page/console errors. The first deployment attempt reached Pages before hosting was enabled and returned404; verification had passed. After workflow hosting was enabled, only the failed deployment job was rerun successfully. No application change was needed for that setup timing issue.
+
+The public [profile](https://github.com/mvahedi2020) links the case study, PRD, walkthrough and [live demo](https://mvahedi2020.github.io/Package-Forge/). The assistant delivery and publication work is complete for this bounded prototype. Final documentation revisions repeat the verification/publication pipeline; the private delivery ledger records final-head parity. These are point-in-time software observations, not uptime or commercial-outcome claims.
+
+Mo's personal comprehension and endorsement of provisional choices, and actual human evaluation, remain unobserved. Software checks cannot establish those findings. This is the publication-status record referenced by the other product documents.

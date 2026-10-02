@@ -1,5 +1,7 @@
 # Package Forge
 
+[Open the live demo](https://mvahedi2020.github.io/Package-Forge/) · [Public source](https://github.com/mvahedi2020/Package-Forge) · [Release evidence](docs/product/Validation.md)
+
 A calm fictional quote worksheet: compare three packages against must-have capabilities and team capacity, explain monthly/annual amounts, then review a next-renewal plan change as a local simulation.
 
 **Product decision:** requirements come before price. A cheaper tier that misses approvals or capacity cannot be recommended as a fit. Annual charges remain distinct from equivalent monthly comparisons. All prices are illustrative USD; there is no checkout, real subscription, tax/refund/proration calculation or integration.
