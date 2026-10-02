@@ -49,7 +49,8 @@ export function parseState(raw:string):State|null {
       const expected=quote({...seed(),revision:q.revision,draft:q.draft,history:s.history.slice(0,i)},q.tier)
       if(JSON.stringify(q)!==JSON.stringify(expected)) return null
     }
-    if(s.canceled.some(id=>!s.history.some(q=>q.id===id))) return null
+    if(s.canceled.some((id,i)=>!s.history.some(q=>q.id===id)||(i>0&&s.history.findIndex(q=>q.id===id)<=s.history.findIndex(q=>q.id===s.canceled[i-1])))) return null
+    if(s.history.length>0&&s.scheduled===null&&!s.canceled.includes(s.history.at(-1)!.id)) return null
     if(s.scheduled!==null&&(s.scheduled!==s.history.at(-1)?.id||s.canceled.includes(s.scheduled))) return null
     return s
   } catch {return null}
