@@ -1,0 +1,29 @@
+import {describe,it,expect} from 'vitest'
+import {BASELINE,CATALOG,CLOCK,FEATURES,SCENARIOS,TIERS,addMonths,cancelScheduled,confirm,cost,fit,losses,parseState,quote,seed,validDraft} from './domain'
+describe('independent price and fit examples',()=>{
+ it.each([['base',2,'monthly',0,0],['studio',8,'monthly',9600,9600],['studio',8,'annual',96000,8000],['archive',12,'annual',288000,24000],['archive',100,'monthly',240000,240000],['studio',0,'annual',0,0]] as const)('%s / %i / %s',(tier,editors,cycle,charge,equivalentMonthly)=>expect(cost(tier,{editors,viewers:10000,cycle,needs:[]})).toEqual({charge,equivalentMonthly}))
+ it('viewers never enter the paid-editor calculation',()=>expect(cost('studio',{...seed().draft,viewers:200})).toEqual({charge:9600,equivalentMonthly:9600}))
+ it('annual Studio saves $192 against twelve $96 charges',()=>expect(cost('studio',SCENARIOS[0].draft).charge*12-cost('studio',{...SCENARIOS[0].draft,cycle:'annual'}).charge).toBe(19200))
+ it('free is blocked by required approvals',()=>expect(fit('base',{editors:2,viewers:8,cycle:'monthly',needs:[FEATURES[1]]})).toEqual(['Missing Approval workflows']))
+ it('overflow has no fitting tier',()=>expect(TIERS.every(t=>fit(t.id,SCENARIOS[3].draft).length>0)).toBe(true))
+ it('exact capacity inclusive',()=>expect(fit('archive',{editors:100,viewers:1000,cycle:'monthly',needs:[...FEATURES]})).toEqual([]))
+ it.each([-1,0.5,10001,Infinity,NaN])('invalid count %s rejected',editors=>expect(validDraft({...seed().draft,editors})).toBe(false))
+ it('viewer decimals and negatives rejected',()=>{expect(validDraft({...seed().draft,viewers:1.2})).toBe(false);expect(validDraft({...seed().draft,viewers:-2})).toBe(false)})
+ it('10,000 valid as assumption but not as fit',()=>{const d={...seed().draft,editors:10000};expect(validDraft(d)).toBe(true);expect(cost('archive',{...d,cycle:'annual'}).charge).toBe(240000000);expect(fit('archive',d)).not.toEqual([])})
+})
+describe('dates and immutable commitments',()=>{
+ it.each([['2026-10-31',1,'2026-11-30'],['2026-01-31',1,'2026-02-28'],['2028-01-31',1,'2028-02-29'],['2028-02-29',12,'2029-02-28'],['2026-12-31',1,'2027-01-31'],['2026-10-31',12,'2027-10-31']])('calendar %s', (d,n,e)=>expect(addMonths(d,Number(n))).toBe(e))
+ it('invalid calendar date throws',()=>expect(()=>addMonths('2026-02-30',1)).toThrow())
+ it('next renewal annual quote fixed and versioned',()=>{const s={...seed(),selected:'archive' as const,draft:SCENARIOS[2].draft};const q=quote(s,'archive');expect([q.catalog,q.clock,q.effective,q.termEnd,q.charge]).toEqual([CATALOG,CLOCK,'2026-10-31','2027-10-31',288000])})
+ it('confirm changes schedule only; edits cannot rewrite quote',()=>{const s={...seed(),selected:'studio' as const};const q=quote(s,'studio');const next=confirm(s,q);next.draft.editors=9;expect(next.history[0].draft.editors).toBe(8);expect(BASELINE.charge).toBe(9600)})
+ it('cancel schedule retains history and baseline',()=>{const s={...seed(),selected:'studio' as const};const n=cancelScheduled(confirm(s,quote(s,'studio')));expect(n.scheduled).toBe(null);expect(n.history).toHaveLength(1);expect(n.canceled).toEqual(['Q1'])})
+ it('changing draft, selection or revision rejects stale quote',()=>{const s={...seed(),selected:'studio' as const};const q=quote(s,'studio');for(const n of [{...s,revision:1},{...s,draft:{...s.draft,editors:9}},{...s,selected:'archive' as const}])expect(()=>confirm(n,q)).toThrow()})
+ it('no-fit cannot create quote',()=>expect(()=>quote(seed(),'base')).toThrow())
+ it('downgrade exposes exact losses',()=>expect(losses('base')).toEqual(['Approval workflows','Editor capacity: 20 → 3','Viewer capacity: 200 → 20']))
+})
+describe('saved state integrity',()=>{
+ it('seed and confirmed/canceled state compatible',()=>{const s={...seed(),selected:'studio' as const};const n=confirm(s,quote(s,'studio'));for(const v of [seed(),n,cancelScheduled(n)])expect(parseState(JSON.stringify(v))).toEqual(v)})
+ it.each(['not json','{}','{"schema":2}','null'])('preserves unsupported data %s',raw=>expect(parseState(raw)).toBe(null))
+ it('rejects wrong quote charge, capacity, dates and references',()=>{const s={...seed(),selected:'studio' as const};const n=confirm(s,quote(s,'studio'));for(const change of [(v:typeof n)=>{v.history[0].charge=100},(v:typeof n)=>{v.history[0].effective='2026-10-02'},(v:typeof n)=>{v.scheduled='Q99'},(v:typeof n)=>{v.history[0].draft.editors=30},(v:typeof n)=>{v.canceled=['Q1']}]){const v=structuredClone(n);change(v);expect(parseState(JSON.stringify(v))).toBe(null)}})
+ it('rejects expired/catalog replaced records',()=>{const s={...seed(),selected:'studio' as const};const n=confirm(s,quote(s,'studio'));n.history[0].expires='2026-10-01';expect(parseState(JSON.stringify(n))).toBe(null);n.history[0].expires='2026-10-09';n.history[0].catalog='old';expect(parseState(JSON.stringify(n))).toBe(null)})
+})
