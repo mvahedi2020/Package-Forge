@@ -1,0 +1,6 @@
+import {useEffect,useRef,type ReactNode} from 'react'
+export function Modal({title,children,onCancel}:{title:string;children:ReactNode;onCancel:()=>void}) {
+ const ref=useRef<HTMLDivElement>(null)
+ useEffect(()=>{const opener=document.activeElement as HTMLElement|null;const dialog=ref.current;dialog?.scrollIntoView({block:'center'});dialog?.querySelector<HTMLElement>('button')?.focus();const key=(e:KeyboardEvent)=>{if(e.key==='Escape'){e.preventDefault();onCancel()}if(e.key==='Tab'){const els=Array.from(dialog?.querySelectorAll<HTMLElement>('button:not(:disabled),input:not(:disabled),a[href],select:not(:disabled)')??[]);const first=els[0],last=els.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last?.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus()}}};document.addEventListener('keydown',key);return()=>{document.removeEventListener('keydown',key);if(opener?.isConnected&&!(opener as HTMLButtonElement).disabled){opener.focus()}else document.getElementById('worksheet-title')?.focus()}},[onCancel])
+ return <div className="overlay"><div ref={ref} className="modal" role="dialog" aria-modal="true" aria-labelledby="dialog-title"><div className="modal-head"><h2 id="dialog-title">{title}</h2><button onClick={onCancel} aria-label="Close preview">×</button></div>{children}</div></div>
+}
