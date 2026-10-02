@@ -28,7 +28,9 @@ React review checked stable dialog effects, derived fit/cost state, explicit but
 
 Ask a participant to choose Cedar's lowest-cost fitting tier, explain annual charge versus equivalent monthly, and state Kite's exact lost capability/capacities and effective date. Observe correct package selection, total-cost explanation and downgrade consequence comprehension without hints. No participant results, customer/commercial outcomes or owner comprehension have been observed. These proposed measures do not establish willingness to pay.
 
-## Release evidence — October 2, 2026
+## Release evidence
+
+Verified October 2, 2026.
 
 The primary reviewer independently checked the fixed Studio baseline, reviewed an eight-editor annual quote of $960 with $80 equivalent monthly, compared the $2,880 Archive quote, canceled and confirmed a replacement, reviewed the $0 Base downgrade with explicit lost capabilities/capacity, canceled its schedule without reviving an older one, and verified the no-fit scenario. Three immutable quote records and cancellation survived refresh. Scenario entry focused the editor at 1280×633; the 320px page had no horizontal overflow or reported page/console errors.
 
