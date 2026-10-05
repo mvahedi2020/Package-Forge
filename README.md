@@ -32,3 +32,5 @@ npm run preview
 
 Preview: `http://127.0.0.1:4191/Package-Forge/`. Only port 4191 is used. Production base is `/Package-Forge/`; build copies the product documents. The build checks runtime/environment and tracked-file guards. Generated files, runtime configuration and browser evidence are ignored. CSP/referrer settings limit the static demo to local resources. CI verifies before its Pages publish job; Action versions are pinned.
 
+
+Read the [product documents](https://mvahedi2020.github.io/Package-Forge/docs/index.html) in the styled reading guide. Canonical Markdown remains in `docs/`.
