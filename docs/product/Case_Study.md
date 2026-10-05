@@ -21,3 +21,7 @@ The active Studio baseline stays separate from a scheduled October31 change. Ver
 Software checks establish calculation, fit, state integrity and reproducible browser behavior, detailed in [Validation](Validation.md). Human evaluation is proposed: ask a participant to select Cedar's tier, explain annual cash commitment and describe Kite's losses and effective date. Success would be a correct explanation without prompting; no participant outcomes have been observed.
 
 S053–S060 trace is in [PRD](PRD.md). [Sample contract](Sample_Contract.md) reproduces the arithmetic and dates; [walkthrough](Sample_Walkthrough.md) reproduces the route. Release evidence is maintained only in [Validation](Validation.md#release-evidence).
+
+## Next investment decision
+
+Package comprehension and price acceptance require separate evidence. First compare this worksheet with a price-led table: can buyers explain fit, annual cash commitment and downgrade losses without prompting? If comprehension holds, conduct separate discovery into needs, willingness to pay and the operating cost of the promised capabilities before choosing real tiers or prices. If buyers must remove a genuine requirement to get a recommendation, reconsider the package boundaries. More quote options should wait until the current choice is understandable; no illustrative price establishes demand, margin or conversion.

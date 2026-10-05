@@ -8,6 +8,8 @@ A calm fictional quote worksheet: compare three packages against must-have capab
 
 Mo owns product and program direction. AI assisted implementation and software verification. Samples are original and fictional; human evaluation is proposed, not performed.
 
+Product tradeoff: needs before price adds a review step and makes a no-fit answer possible. Package comprehension must be established separately from demand, willingness to pay or margin. See the [case study](docs/product/Case_Study.md) for the proposed comparison and investment criteria.
+
 ## Review the product
 
 [Product brief](docs/product/Product_Brief.md) · [PRD and S053–S060 map](docs/product/PRD.md) · [Sample/state contract](docs/product/Sample_Contract.md) · [Case study](docs/product/Case_Study.md) · [Decisions and risks](docs/product/Decisions_and_Risks.md) · [Validation and release evidence](docs/product/Validation.md) · [Exact walkthrough](docs/product/Sample_Walkthrough.md).
