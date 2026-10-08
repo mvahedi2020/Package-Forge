@@ -1,5 +1,9 @@
 # Package Forge — requirements before price
 
+Compare plans using the features and team size you need. Understand the sample monthly or yearly charge, and review what you would lose when moving to a smaller plan.
+
+**The product choice:** Choose a plan that meets the requirements before comparing price. [Try the sample](https://mvahedi2020.github.io/Package-Forge/) · [Follow the walkthrough](Sample_Walkthrough.md).
+
 ## Problem and product judgment
 
 A buyer can select a cheaper plan while accidentally removing an approval step, or read an annual equivalent as a monthly bill. Package Forge uses an explicit needs worksheet and a separate renewal review so the choice can be explained before a local simulation is confirmed.

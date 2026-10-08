@@ -2,7 +2,9 @@
 
 [Open the live demo](https://mvahedi2020.github.io/Package-Forge/) · [Public source](https://github.com/mvahedi2020/Package-Forge) · [Release evidence](docs/product/Validation.md)
 
-A calm fictional quote worksheet: compare three packages against must-have capabilities and team capacity, explain monthly/annual amounts, then review a next-renewal plan change as a local simulation.
+Compare plans using the features and team size you need. Understand the sample monthly or yearly charge, and review what you would lose when moving to a smaller plan. All records in this demo are fictional.
+
+**Try it:** Compare Cedar’s needs with the plans, switch to an annual commitment, and inspect the quote before confirming the local simulation. [Open the demo](https://mvahedi2020.github.io/Package-Forge/) · [Follow the walkthrough](docs/product/Sample_Walkthrough.md).
 
 **Product decision:** requirements come before price. A cheaper tier that misses approvals or capacity cannot be recommended as a fit. Annual charges remain distinct from equivalent monthly comparisons. All prices are illustrative USD; there is no checkout, real subscription, tax/refund/proration calculation or integration.
 
