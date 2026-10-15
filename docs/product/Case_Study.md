@@ -4,6 +4,12 @@ Compare plans using the features and team size you need. Understand the sample m
 
 **The product choice:** Choose a plan that meets the requirements before comparing price. [Try the sample](https://mvahedi2020.github.io/Package-Forge/) · [Follow the walkthrough](Sample_Walkthrough.md).
 
+## Experience and decision
+
+My Mabrosi work included defining free and paid tiers and their feature sets. This example focuses on whether a buyer can understand package fit, payment timing and the consequences of a downgrade. This is a separate fictional portfolio exercise; its records, rules and results do not reproduce an employer system.
+
+**Decision to challenge:** Does the lowest-cost fitting tier solve the buyer’s real need? Clear arithmetic helps comprehension, but real pricing still needs willingness-to-pay, demand and cost evidence.
+
 ## Problem and product judgment
 
 A buyer can select a cheaper plan while accidentally removing an approval step, or read an annual equivalent as a monthly bill. Package Forge uses an explicit needs worksheet and a separate renewal review so the choice can be explained before a local simulation is confirmed.

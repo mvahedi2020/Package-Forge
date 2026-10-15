@@ -6,6 +6,8 @@ Compare plans using the features and team size you need. Understand the sample m
 
 **Try it:** Compare Cedar’s needs with the plans, switch to an annual commitment, and inspect the quote before confirming the local simulation. [Open the demo](https://mvahedi2020.github.io/Package-Forge/) · [Follow the walkthrough](docs/product/Sample_Walkthrough.md).
 
+**Experience connection:** My Mabrosi work included defining free and paid tiers and their feature sets. This example focuses on whether a buyer can understand package fit, payment timing and the consequences of a downgrade. [Read the decision to challenge](docs/product/Case_Study.md#experience-and-decision).
+
 **Product decision:** requirements come before price. A cheaper tier that misses approvals or capacity cannot be recommended as a fit. Annual charges remain distinct from equivalent monthly comparisons. All prices are illustrative USD; there is no checkout, real subscription, tax/refund/proration calculation or integration.
 
 Mo owns product and program direction. AI assisted implementation and software verification. Samples are original and fictional; human evaluation is proposed, not performed.
