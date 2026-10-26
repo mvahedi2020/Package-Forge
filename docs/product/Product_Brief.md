@@ -10,4 +10,4 @@ Original samples: Cedar Design, Kite Collective, Harbor Records and Widefield Ne
 
 Deep teal signals the worksheet, mint marks fitting choices and coral signals a decision or exception. The design emphasizes a comparison sheet instead of a metrics dashboard.
 
-Trace: S053 framing, S054 sample contract, S055 static foundation, S056 fit/cost, S057 quote consequences, S058 recovery, S059 software/evaluation evidence, S060 reviewed release. See [validation and release evidence](Validation.md) for actual versus proposed checks and remaining release work.
+Trace: S053 framing, S054 sample contract, S055 static foundation, S056 fit/cost, S057 quote consequences, S058 recovery, S059 software/evaluation evidence, S060 reviewed release. See [validation and release evidence](Validation.md) for actual versus proposed checks and release status.

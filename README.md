@@ -40,3 +40,7 @@ Preview: `http://127.0.0.1:4191/Package-Forge/`. Only port 4191 is used. Product
 
 
 Read the [product documents](https://mvahedi2020.github.io/Package-Forge/docs/index.html) in the styled reading guide. Canonical Markdown remains in `docs/`.
+
+## Typography
+
+The interface and product reading guide use Aptos for body text and Aptos Display for headings. Only Aptos, Aptos Display, SF Pro, SF Pro Rounded and Calibri are requested. Availability depends on the fonts installed on the viewing device; native Apple font aliases select SF Pro. No font files are bundled or downloaded.
